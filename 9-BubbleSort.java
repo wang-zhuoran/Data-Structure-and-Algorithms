@@ -1,4 +1,4 @@
-package 大一下学期;
+package 一学;
 import java.util.Arrays;;
 public class BubbleSort {
 	public static void bubbleSort(int[] a)  {
