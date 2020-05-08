@@ -5,45 +5,45 @@ import javax.management.RuntimeErrorException;
 public class ArrayQueueDemo {
 
 	public static void main(String[] args) {
-		//²âÊÔÒ»ÏÂ
-		//´´½¨¶ÓÁĞ
+		//æµ‹è¯•ä¸€ä¸‹
+		//åˆ›å»ºé˜Ÿåˆ—
 		ArrayQueue queue = new ArrayQueue(3);
-		char key = ' '; //½ÓÊÕÓÃ»§ÊäÈë
+		char key = ' '; //æ¥æ”¶ç”¨æˆ·è¾“å…¥
 		Scanner sc = new Scanner(System.in);
 		boolean loop = true;
 		while(loop) {
-			System.out.println("s(show): ÏÔÊ¾Êı¾İ");
-			System.out.println("e(exit): ÍË³ö³ÌĞò");
-			System.out.println("a(add): Ìí¼ÓÊı¾İµ½¶ÓÁĞ");
-			System.out.println("g(get): ´Ó¶ÓÁĞÈ¡³öÊı¾İ");
-			System.out.println("h(head): ²é¿´¶ÓÁĞÍ·µÄÊı¾İ");
+			System.out.println("s(show): æ˜¾ç¤ºæ•°æ®");
+			System.out.println("e(exit): é€€å‡ºç¨‹åº");
+			System.out.println("a(add): æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—");
+			System.out.println("g(get): ä»é˜Ÿåˆ—å–å‡ºæ•°æ®");
+			System.out.println("h(head): æŸ¥çœ‹é˜Ÿåˆ—å¤´çš„æ•°æ®");
 			key = sc.next().charAt(0);
 			switch (key) {
 			case 's':
 				queue.showQueue();
 				break;
 			case 'a':
-				System.out.println("ÇëÊäÈëÒ»¸öÊı£º ");
+				System.out.println("è¯·è¾“å…¥ä¸€ä¸ªæ•°ï¼š ");
 				int value = sc.nextInt();
 				queue.addQueue(value);
 				break;
-			case 'g': //È¡³öÊı¾İ
+			case 'g': //å–å‡ºæ•°æ®
 				try {
 					int res = queue.getQueue();
-					System.out.printf("È¡³öµÄÊı¾İÊÇ£º%d\n", res);
+					System.out.printf("å–å‡ºçš„æ•°æ®æ˜¯ï¼š%d\n", res);
 				} catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 				break;
-			case 'h': //²é¿´¶ÓÁĞÍ·µÄÊı¾İ
+			case 'h': //æŸ¥çœ‹é˜Ÿåˆ—å¤´çš„æ•°æ®
 				try {
 					int res = queue.headQueue();
-					System.out.printf("¶ÓÁĞÍ·µÄÊı¾İÊÇ£º%d\n", res);
+					System.out.printf("é˜Ÿåˆ—å¤´çš„æ•°æ®æ˜¯ï¼š%d\n", res);
 				} catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 				break;
-			case 'e': //ÍË³ö
+			case 'e': //é€€å‡º
 				sc.close();
 				loop = false;
 				break;
@@ -52,65 +52,65 @@ public class ArrayQueueDemo {
 			}			
 		}
 		
-		System.out.println("³ÌĞòÍË³ö");
+		System.out.println("ç¨‹åºé€€å‡º");
 		
 		
 	
-	}
+	} 
 
 }
-//Ê¹ÓÃÊı×éÄ£Äâ¶ÓÁĞ¡ª¡ª±àĞ´Ò»¸öArrayQueueÀà
+//ä½¿ç”¨æ•°ç»„æ¨¡æ‹Ÿé˜Ÿåˆ—â€”â€”ç¼–å†™ä¸€ä¸ªArrayQueueç±»
 class ArrayQueue{
-	private int maxSize; //±íÊ¾Êı×éµÄ×î´óÈİÁ¿
-	private int front; //Ö¸Ïò¶ÓÁĞÍ·²¿
-	private int rear; //Ö¸Ïò¶ÓÁĞÎ²²¿
-	private int[] arr; //¸ÃÊı×éÓÃÓÚ´æ·ÅÊı¾İ£¬Ä£Äâ¶ÓÁĞ
+	private int maxSize; //è¡¨ç¤ºæ•°ç»„çš„æœ€å¤§å®¹é‡
+	private int front; //æŒ‡å‘é˜Ÿåˆ—å¤´éƒ¨
+	private int rear; //æŒ‡å‘é˜Ÿåˆ—å°¾éƒ¨
+	private int[] arr; //è¯¥æ•°ç»„ç”¨äºå­˜æ”¾æ•°æ®ï¼Œæ¨¡æ‹Ÿé˜Ÿåˆ—
 	
-	//´´½¨¶ÓÁĞµÄ¹¹ÔìÆ÷
+	//åˆ›å»ºé˜Ÿåˆ—çš„æ„é€ å™¨
 	public ArrayQueue(int arrayMaxSize) {
 		maxSize = arrayMaxSize;
 		arr = new int[maxSize];
-		front = -1; //Ö¸Ïò¶ÓÁĞÍ·²¿£¬·ÖÎö³öfrontÖ¸Ïò¶ÓÁĞÍ·µÄÇ°Ò»¸öÎ»ÖÃ
-		rear = -1;  //Ö¸Ïò¶ÓÁĞÎ²¾ßÌåµÄÊı¾İ
+		front = -1; //æŒ‡å‘é˜Ÿåˆ—å¤´éƒ¨ï¼Œåˆ†æå‡ºfrontæŒ‡å‘é˜Ÿåˆ—å¤´çš„å‰ä¸€ä¸ªä½ç½®
+		rear = -1;  //æŒ‡å‘é˜Ÿåˆ—å°¾å…·ä½“çš„æ•°æ®
 	}
 	
-	//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÂú
+	//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦æ»¡
 	public boolean is_full() {
 		return rear == maxSize - 1;
 	}
 	
-	//ÅĞ¶Ï¶ÓÁĞÎª¿Õ
+	//åˆ¤æ–­é˜Ÿåˆ—ä¸ºç©º
 	public boolean is_empty() {
 		return rear == front;
 	}
 	
-	//Ìí¼ÓÊı¾İµ½¶ÓÁĞ
+	//æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—
 	public void addQueue(int n) {
-		//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÒÑÂú
+		//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦å·²æ»¡
 		if (is_full()) {
-			System.out.println("¶ÓÁĞÒÑÂú£¬²»ÄÜ¼ÓÈëÊı¾İ");
+			System.out.println("é˜Ÿåˆ—å·²æ»¡ï¼Œä¸èƒ½åŠ å…¥æ•°æ®");
 			return;
 		}
-		rear++; //ÈÃrearºóÒÆ
+		rear++; //è®©rearåç§»
 		arr[rear] = n;
 	}
 	
-	//»ñÈ¡¶ÓÁĞÊı¾İ£¬³ö¶ÓÁĞ
+	//è·å–é˜Ÿåˆ—æ•°æ®ï¼Œå‡ºé˜Ÿåˆ—
 	public int getQueue() {
-		//ÅĞ¶Ï¶ÓÁĞÊÇ·ñ¿Õ
+		//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ç©º
 		if(is_empty()) {
-			//Í¨¹ıÅ×³öÒì³£À´´¦Àí
-			throw new RuntimeException("¶ÓÁĞÎª¿Õ£¬²»ÄÜÈ¡Êı¾İ");
+			//é€šè¿‡æŠ›å‡ºå¼‚å¸¸æ¥å¤„ç†
+			throw new RuntimeException("é˜Ÿåˆ—ä¸ºç©ºï¼Œä¸èƒ½å–æ•°æ®");
 		}
-		front++; //frontºóÒÆ
+		front++; //frontåç§»
 		return arr[front];
 	}
 	
-	//ÏÔÊ¾¶ÓÁĞµÄËùÓĞÊı¾İ
+	//æ˜¾ç¤ºé˜Ÿåˆ—çš„æ‰€æœ‰æ•°æ®
 	public  void showQueue() {
-		//±éÀú
+		//éå†
 		if(is_empty()) {
-			System.out.println("¶ÓÁĞÎª¿Õ£¬ÎŞ·¨±éÀú");
+			System.out.println("é˜Ÿåˆ—ä¸ºç©ºï¼Œæ— æ³•éå†");
 			return;
 		}
 		for (int i = 0; i < arr.length; i++) {
@@ -118,10 +118,10 @@ class ArrayQueue{
 		}
 	}
 	
-	//ÏÔÊ¾¶ÓÁĞµÄÍ·²¿Êı¾İ£¬×¢Òâ²»ÊÇÈ¡Êı¾İ
+	//æ˜¾ç¤ºé˜Ÿåˆ—çš„å¤´éƒ¨æ•°æ®ï¼Œæ³¨æ„ä¸æ˜¯å–æ•°æ®
 	public int headQueue() {
 		if(is_empty())
-		throw new RuntimeException("¶ÓÁĞÎª¿Õ£¬Ã»ÓĞÊı¾İ");
+		throw new RuntimeException("é˜Ÿåˆ—ä¸ºç©ºï¼Œæ²¡æœ‰æ•°æ®");
 		return front + 1;
 	}
 }
