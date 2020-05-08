@@ -2,23 +2,23 @@ package DataStructure;
 
 import java.util.Stack;
 
-//ÑİÊ¾Õ»StackµÄ»ù±¾Ê¹ÓÃ
+//æ¼”ç¤ºæ ˆStackçš„åŸºæœ¬ä½¿ç”¨
 public class TestStack {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Stack<String> stack = new Stack();
-		//ÈëÕ»
+		//å…¥æ ˆ
 		stack.add("jack");
 		stack.add("tom");
 		stack.add("smith");
 		
-		//È¡³ö
+		//å–å‡º
 		while (stack.size()>0) {
-			System.out.println(stack.pop());  //½«Õ»¶¥µÄÊı¾İÈ¡³ö
+			System.out.println(stack.pop());  //å°†æ ˆé¡¶çš„æ•°æ®å–å‡º
 			
 		}
-		//recap£ºÕ»×ñÑ­ÏÈÈëºó³öµÄÔ­Ôò(FILO, First in last out!)
+		//recapï¼šæ ˆéµå¾ªå…ˆå…¥åå‡ºçš„åŸåˆ™(FILO, First in last out!)
 		
 	}
 
